@@ -7,13 +7,14 @@
 //
 
 import Foundation
+
 public class Calculator {
     public func calculate(_ args: [String]) -> Int {
         var result: Int = 0
         result = 0
         let size = args.count
         if args.contains("+"){
-             result = Int(args[0])! + Int(args[2])!
+            result = Int(args[0])! + Int(args[2])!
         }
         else if args.contains("-"){
             result = Int(args[0])! - Int(args[2])!
@@ -48,7 +49,7 @@ public class Calculator {
             }
         }
         
-         return result
+        return result
     }
     
     public func calculate(_ arg: String) -> Int {
