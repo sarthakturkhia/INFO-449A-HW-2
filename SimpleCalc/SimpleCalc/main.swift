@@ -28,12 +28,12 @@ public class Calculator {
         else if args.contains("%"){
             result = Int(args[0])! % Int(args[2])!
         }
-        else if args.contains("Avg"){
+        else if args.contains("avg"){
             if size > 1{
                 for i in 0 ..< size - 1{
                     result += Int(args[i])!
                 }
-                result = result / size - 1
+                result = result / (size - 1)
             }
         }
         else if args.contains("count"){
@@ -41,14 +41,25 @@ public class Calculator {
         }
         else if args.contains("fact"){
             if size > 1{
-                var num: Int = Int(args[0])!
-                while (num - 1 != 0){
-                    result = num * num - 1
-                    num = num - 1
+                let num: Int = Int(args[0])!
+                if num < 3{
+                    result = num
                 }
+                else{
+                    result = factorial(num)
+                    }
             }
         }
         
+        
+        return result
+    }
+    
+    public func factorial(_ args: Int) -> Int {
+        var result = args
+        for i in 1..<args {
+            result = result * (args - i)
+        }
         return result
     }
     
@@ -64,3 +75,13 @@ let operation = readLine()!
 let second = readLine()!
 print(Calculator().calculate([first, operation, second]))
 
+//let testsAndResults = [
+//    ("0 count", 1),
+//    ("0 avg", 0),
+//    ("0 fact", 0)
+//]
+//
+//for tup in testsAndResults {
+//    print(Calculator().calculate(tup.0))
+//    print(Calculator().calculate(tup.0) == tup.1)
+//}
